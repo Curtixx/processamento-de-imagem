@@ -39,7 +39,6 @@ namespace Projeto3bi_ICG
             return Cor;
         }
 
-
         public void processaImagem()
         {
             for (int i = 0; i <= coluna_panela - 1; i++)
@@ -60,7 +59,7 @@ namespace Projeto3bi_ICG
             }
 
             imgnova.Save(@"D:\Downloads\imagem_proj\ImagemProcessada.jpg");
-            pictureBox3.Load(@"D:\Downloads\imagem_proj\ImagemProcessada.jpg");
+            pictureBox1.Load(@"D:\Downloads\imagem_proj\ImagemProcessada.jpg");
         }
 
         public void deixarImagemCinza()
@@ -75,12 +74,13 @@ namespace Projeto3bi_ICG
 
                     byte grayLevel = (byte)((r * 0.30) + (g * 0.59) + (b * 0.11));
                     Color cor = CriaCor(255, grayLevel, grayLevel, grayLevel);
-                    imgnova.SetPixel(i, j,cor);
+                    imgnova.SetPixel(i, j, cor);
 
                 }
             }
 
             imgnova.Save(@"D:\Downloads\imagem_proj\ImagemProcessadaCinza.jpg");
+            pictureBox2.Load(@"D:\Downloads\imagem_proj\ImagemProcessadaCinza.jpg");
         }
 
         public void deixarImagemBinaria()
@@ -96,7 +96,8 @@ namespace Projeto3bi_ICG
                         Color cor = CriaCor(255, 0, 0, 0);
                         imgnova.SetPixel(i, j, cor);
 
-                    } else if (r > 127)
+                    }
+                    else if (r > 127)
                     {
                         Color cor = CriaCor(255, 255, 255, 255);
                         imgnova.SetPixel(i, j, cor);
@@ -104,8 +105,8 @@ namespace Projeto3bi_ICG
 
                 }
             }
-
             imgnova.Save(@"D:\Downloads\imagem_proj\ImagemProcessadaBinaria.jpg");
+            pictureBox3.Load(@"D:\Downloads\imagem_proj\ImagemProcessadaBinaria.jpg");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -113,6 +114,11 @@ namespace Projeto3bi_ICG
             processaImagem();
             deixarImagemCinza();
             deixarImagemBinaria();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
